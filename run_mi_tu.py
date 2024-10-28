@@ -20,6 +20,6 @@ if __name__ == '__main__':
   while True:
     for diag in diags:
       mySleep(5)
-      diag.leftClickImg("test", yfix=50)
+      diag.leftClickImg("baotu_wa", yfix=41)
       mySleep(5)
-      diag.leftClickImg("test", yfix=50)
+      diag.leftClickImg("mijin_zhandou")
