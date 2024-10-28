@@ -75,7 +75,7 @@ def locateCenterOnScreen_ex(self, pic, reg=33, confidence=0.9, timeDue=2):
     res = self.locateCenterOnScreen_safe(pic, reg, confidence)
     if res is None:
         return res
-    #mySleep(timeDue)
+    mySleep(timeDue)
     return self.locateCenterOnScreen_safe(pic, reg, confidence)
 
 def leftClickImg(self, pic, reg=33, confidence=0.9, yfix=0, xfix=0, timeDue=2) -> bool:

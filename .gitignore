@@ -1,0 +1,8 @@
+# This file is used to exclude files and directories from Git version control.
+# For more information, see https://git-scm.com/docs/gitignore.
+# Ignore all files and directories in the directory
+# Ignore the following files and directories
+
+
+*.log
+*.pyc
