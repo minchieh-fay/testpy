@@ -10,7 +10,6 @@ class Login(BaseScript):
 
     def loginout(self):
         print("run")
-        self.login()
 
 
 if __name__ == '__main__':

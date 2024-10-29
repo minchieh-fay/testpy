@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>实时截图查看</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app" style="text-align: center; margin-top: 30px;">
+        <h1>实时截图查看</h1>
+        
+        <!-- 单选框选择当前是1号还是2号 -->
+        <el-radio-group v-model="currentSelection" style="margin-bottom: 20px;">
+            <el-radio label="0">1号</el-radio>
+            <el-radio label="1">2号</el-radio>
+        </el-radio-group>
+        
+        <!-- 使用 Element-UI 的 el-button 作为刷新按钮 -->
+        <el-button type="primary" @click="refreshScreenshot" style="margin-bottom: 20px;">刷新截图</el-button>
+        
+        <img :src="screenshotUrl" @click="handleImageClick" style="cursor: pointer;"/>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                screenshotUrl: '/screenshot',
+                currentSelection: '1' // 默认选择1号
+            },
+            methods: {
+                refreshScreenshot() {
+                    // 发送请求时带上选择的参数
+                    this.screenshotUrl = `/screenshot?selection=${this.currentSelection}&_=${new Date().getTime()}`;
+                },
+                handleImageClick(event) {
+                    const x = event.offsetX;
+                    const y = event.offsetY;
+
+                    // 发送点击事件和当前选择的值
+                    axios.post('/click', { x: x, y: y, selection: this.currentSelection })
+                        .then(response => {
+                            console.log('点击事件已发送', response.data);
+                        })
+                        .catch(error => {
+                            console.error('发送点击事件失败', error);
+                        });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -10,8 +10,8 @@ def getWindowList():
     global windowsList
     if windowsList is not None:
         return windowsList
-    windowsList = pyautogui.getWindowsWithTitle('梦幻西游：时空')
-    #windowsList = pyautogui.getWindowsWithTitle('Calculator')
+    #windowsList = pyautogui.getWindowsWithTitle('梦幻西游：时空')
+    windowsList = pyautogui.getWindowsWithTitle('Calculator')
     windowsList = list(filter(lambda x: x.left >= 0, windowsList))
     windowsList.sort(key=lambda x: (x.left, x.top))
 
