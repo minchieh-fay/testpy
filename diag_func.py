@@ -5,7 +5,7 @@ import logging
 import sys
 import threading
 import time
-
+import random
 import playsound as pl
 import pyautogui
 import pydirectinput
@@ -14,7 +14,7 @@ from PIL import Image
 
 from pygetwindow import PyGetWindowException, BaseWindow
 
-from tool import *
+import tool
 
 def diag_func_print(self):
   print(self.left, self.width, self.height, self.right)
@@ -75,7 +75,7 @@ def locateCenterOnScreen_ex(self, pic, reg=33, confidence=0.9, timeDue=2):
     res = self.locateCenterOnScreen_safe(pic, reg, confidence)
     if res is None:
         return res
-    mySleep(timeDue)
+    tool.mySleep(timeDue)
     return self.locateCenterOnScreen_safe(pic, reg, confidence)
 
 def leftClickImg(self, pic, reg=33, confidence=0.9, yfix=0, xfix=0, timeDue=2) -> bool:

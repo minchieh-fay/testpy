@@ -13,6 +13,7 @@ import pyperclip
 from pygetwindow import PyGetWindowException, BaseWindow
 
 LOGGER_ENABLE = True
+TEST_MODE = False
 
 logger = logging.getLogger('mylogger')
 logger.setLevel(logging.DEBUG)
@@ -37,7 +38,7 @@ def handle_exception(exc_type, exc_value, exc_traceback):
                   exc_info=(exc_type, exc_value, exc_traceback))
 
 # 设置全局异常处理
-sys.excepthook = handle_exception
+#sys.excepthook = handle_exception
 
 class BaseScript:
   def __init__(self, idx=0):
