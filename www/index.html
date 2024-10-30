@@ -1,13 +1,28 @@
 <!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--meta name="viewport"
+  content="width=device-width,initial-scale=2.0, minimum-scale=2.0, maximum-scale=2.0, user-scalable=no" /-->
+
 <html>
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <meta content="telephone=no,email=no" name="format-detection" />
+  <meta content="maximum-dpr=1" name="flexible" />
+  <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible_css.js,flexible.js"></script>
   <title>实时截图查看</title>
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!--link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script-->
+
+  <link rel="stylesheet" href="www/element.css">
+  <script src="www/vue.js"></script>
+  <script src="www/axios.min.js"></script>
+  <script src="www/element.js"></script>
 </head>
 
 <body>
@@ -49,6 +64,9 @@
           axios.post('/leftclick', { x: x, y: y, selection: this.currentSelection })
             .then(response => {
               console.log('点击事件已发送', response.data);
+              setTimeout(() => {
+                this.refreshScreenshot();
+              }, 1000)
             })
             .catch(error => {
               console.error('发送点击事件失败', error);
