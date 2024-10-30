@@ -94,5 +94,5 @@ def mitu():
 
 
 if __name__ == '__main__':
-    tool.TEST_MODE = True
+    #tool.TEST_MODE = True
     app.run(host='0.0.0.0', port=5000)
