@@ -53,6 +53,17 @@ def mySleep(second):
     sec += random_increase*sec
     time.sleep(sec)
 
+def pRand(n, p, dan=False):
+    if p <0 :
+        p = -p
+    if dan == True:
+        random_increase = random.uniform(0, p)
+        n += random_increase*n
+    else:
+        random_increase = random.uniform(-p, p)
+        n += random_increase*n
+    return n
+
 # 窗口固定大小
 originSize = [1040, 807]
 smallSize = (907, 707)

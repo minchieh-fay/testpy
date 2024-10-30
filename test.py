@@ -1,6 +1,11 @@
 
+import run,tool
 
 
+print(tool.pRand(100, 0.1))
+print(tool.pRand(100, 0.1))
+print(tool.pRand(100, 0.1))
 
-if __name__ == '__main__':
- print(1)
+print(tool.pRand(100, 0.1,True))
+print(tool.pRand(100, 0.1, True))
+print(tool.pRand(100, 0.1, True))

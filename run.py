@@ -4,6 +4,7 @@ from flask import Flask, send_file, send_from_directory,jsonify, request
 import pyautogui
 from PIL import Image
 import json
+import random
 
 import tool
 import diag 
@@ -77,6 +78,51 @@ def leftclick():
         return json.dumps({'status': 'success', 'absolute_x': absolute_x, 'absolute_y': absolute_y})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+#拖拽背包
+@app.route('/dragpag', methods=['POST'])
+def dragpag():
+    data = request.json
+    selection = int(data['selection'])
+
+    windows = diag.getWindowList()
+    
+    # 检查是否找到窗口
+    if not windows:
+        return "Window not found", 404
+
+    # 获取窗口对象
+    window = windows[selection]
+
+    try:
+        pyautogui.moveTo(window.left+int(tool.pRand(553,0.1)), window.top+ int(tool.pRand(438,0.1)))
+        pyautogui.dragTo(window.left+int(tool.pRand(553,0.1)), window.top+int(tool.pRand(222,0.1)), duration=0.5)
+        return json.dumps({'status': 'success'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+#拖拽菜单
+@app.route('/dragmenu', methods=['POST'])
+def dragmenu():
+    data = request.json
+    selection = int(data['selection'])
+
+    windows = diag.getWindowList()
+    
+    # 检查是否找到窗口
+    if not windows:
+        return "Window not found", 404
+
+    # 获取窗口对象
+    window = windows[selection]
+
+    try:
+        pyautogui.moveTo(window.left+int(tool.pRand(454,0.1)), window.top+ int(tool.pRand(290,0.1)))
+        pyautogui.dragTo(window.left+int(tool.pRand(454,0.1)), window.top+int(tool.pRand(160,0.1)), duration=0.3)
+        return json.dumps({'status': 'success'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/mitu', methods=['POST'])
 def mitu():
