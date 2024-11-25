@@ -40,8 +40,9 @@
     <el-switch v-model="isMiTuOn" active-text="开mitu" inactive-text="关mitu"
       @change="handleSwitchMituChange"></el-switch>
 
-    <el-button type="primary" @click="dragPag" style="margin-bottom: 20px;">滑动背包</el-button>
     <el-button type="primary" @click="dragMenu" style="margin-bottom: 20px;">滑动菜单</el-button>
+    <el-button type="primary" @click="dragPag" style="margin-bottom: 20px;">滑动背包</el-button>
+    
 
     <img :src="screenshotUrl" @click="handleImageClick" style="cursor: pointer;" />
   </div>
